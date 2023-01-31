@@ -4,10 +4,9 @@ pipeline {
     stages {
         stage('build') {
             steps {
-                sh 'cd src/app && pwd && ls'
                 sh 'export FLASK_APP=flaskr'
                 sh 'export FLASK_ENV=development'
-                sh 'pip install --editable .' 
+                sh 'cd src/app && pip install --editable .' 
                 sh 'flask init-db'
                 sh 'flask run --host=0.0.0.0'
             }
