@@ -7,7 +7,7 @@ pipeline {
                 sh 'cd src/app && pwd'
                 sh 'export FLASK_APP=flaskr'
                 sh 'export FLASK_ENV=development'
-                sh 'pip install --editable .' 
+                sh 'sudo pip install --editable .' 
                 sh 'flask init-db'
                 sh 'flask run --host=0.0.0.0'
             }
