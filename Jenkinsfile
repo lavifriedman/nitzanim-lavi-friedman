@@ -1,4 +1,4 @@
-Jenkinsfile (Declarative Pipeline)
+// Jenkinsfile (Declarative Pipeline)
 pipeline {
     agent { docker { image 'maven:3.8.7-eclipse-temurin-11' } }
     stages {
