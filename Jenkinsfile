@@ -6,6 +6,7 @@ pipeline {
             steps {
                 sh 'export FLASK_APP=flaskr'
                 sh 'export FLASK_ENV=development'
+                sh 'pip install --upgrade pip'
                 sh 'cd src/app && pip install --editable . && flask init-db && flask run --host=0.0.0.0'
             }
         }
