@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('build') {
             steps {
-                sh 'curl http://localhost:5000'
+                sh 'flask run --host=0.0.0.0'
             }
         }
     }
