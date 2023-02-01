@@ -1,13 +1,10 @@
 // Jenkinsfile (Declarative Pipeline)
 pipeline {
-    agent { docker { image 'python:3-alpine' } }
+    agent { docker { image 'python-app:latest' } }
     stages {
         stage('build') {
             steps {
-                sh 'export FLASK_APP=flaskr'
-                sh 'export FLASK_ENV=development'
-                sh 'pip install --upgrade pip'
-                sh 'cd src/app && pip install --editable . && flask init-db && flask run --host=0.0.0.0'
+                sh 'curl http://localhost:5000'
             }
         }
     }
