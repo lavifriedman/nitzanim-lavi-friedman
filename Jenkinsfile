@@ -1,6 +1,6 @@
 // Jenkinsfile (Declarative Pipeline)
 pipeline {
-    agent { docker { image 'python-app:latest' } }
+    agent { docker { image 'python-flask-app:latest' } }
     stages {
         stage('build') {
             steps {
