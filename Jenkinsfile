@@ -4,7 +4,8 @@ pipeline {
     stages {
         stage('build') {
             steps {
-                dir('src/app') { 
+                dir('src/app') {
+                    sh 'ls' 
                      sh 'docker build .'
                      }
             }
