@@ -1,10 +1,11 @@
 // Jenkinsfile (Declarative Pipeline)
 pipeline {
-    agent { docker { image 'python-app:latest' } }
+    agent any
     stages {
         stage('build') {
             steps {
-                sh 'flask run --host=0.0.0.0'
+                sh 'cd src/app && docker build -t flask-app:1.0'
+                sh 'docker run flask-app:1.0'
             }
         }
     }
