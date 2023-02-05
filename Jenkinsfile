@@ -1,6 +1,6 @@
 // Jenkinsfile (Declarative Pipeline)
 pipeline {
-    agent { docker { image 'ubuntu:latest' } }
+    agent { docker { image 'docker:latest' } }
     stages {
         stage('build') {
             steps {
