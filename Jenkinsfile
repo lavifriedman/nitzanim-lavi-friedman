@@ -4,7 +4,9 @@ pipeline {
     stages {
         stage('build') {
             steps {
-                sh 'pwd'
+                sh 'cd src/app'
+                sh 'docker build -t flask-app-1 .'
+                sh 'docker run -dp 80:5000 flask-app-1'
             }
         }
     }
