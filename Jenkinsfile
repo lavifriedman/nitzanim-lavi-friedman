@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('build') {
             steps {
-                dir('app/src') { 
+                dir('src/app') { 
                      sh 'docker build -t flask-app-1 .'
                      }
             }
