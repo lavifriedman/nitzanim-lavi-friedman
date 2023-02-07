@@ -8,7 +8,7 @@ pipeline {
          stage('Clone repository') { 
             steps { 
                 script{
-                checkout scm
+                sh 'pwd'
                 }
             }
         }
@@ -16,7 +16,7 @@ pipeline {
         stage('Build') { 
             steps { 
                 script{
-                 app = docker.build("underwater")
+                 app = docker.build("lavi-devops-course")
                 }
             }
         }
