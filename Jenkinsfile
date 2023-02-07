@@ -1,20 +1,40 @@
 // Jenkinsfile (Declarative Pipeline)
 pipeline {
     agent any
+    options {
+        skipStagesAfterUnstable()
+    }
     stages {
-        stage('build') {
-            steps {
-                sh 'ls' 
-                sh 'docker build -t flask-app:4.0 .'
+         stage('Clone repository') { 
+            steps { 
+                script{
+                checkout scm
                 }
             }
-        stage('Push image to ECR'){
-            steps{
-                sh 'docker build -t flask-app:4.0 .'
-                sh 'docker tag flask-app:4.0 870461622945.dkr.ecr.us-east-1.amazonaws.com/lavi-devops-course:flask-app-4.0'
-                sh 'docker push 870461622945.dkr.ecr.us-east-1.amazonaws.com/lavi-devops-course:flask-app-4.0'
+        }
+
+        stage('Build') { 
+            steps { 
+                script{
+                 app = docker.build("underwater")
+                }
+            }
+        }
+        stage('Test'){
+            steps {
+                 echo 'Empty'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                script{
+                        docker.withRegistry('870461622945.dkr.ecr.us-east-1.amazonaws.com', 'ecr:us-east-1:aws-ecr') {
+                    app.push("${5}")
+                    app.push("latest")
+                    }
                 }
             }
         }
     }
+}
 
