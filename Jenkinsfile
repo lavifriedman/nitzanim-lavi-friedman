@@ -12,10 +12,11 @@ pipeline {
                 }
             }
         }
+
         stage('Build') { 
             steps { 
                 script{
-                 app = docker.build("my-flask-app")
+                 app = docker.build("underwater")
                 }
             }
         }
@@ -27,7 +28,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 script{
-                        docker.withRegistry('870461622945.dkr.ecr.us-east-1.amazonaws.com', 'ecr:us-east-1:aws-credenitals') {
+                        docker.withRegistry('https://870461622945.dkr.ecr.us-east-1.amazonaws.com/lavi-devops-course', 'ecr:us-east-1:aws-credentials') {
                     app.push("${5}")
                     app.push("latest")
                     }
