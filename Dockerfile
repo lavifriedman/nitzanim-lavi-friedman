@@ -8,8 +8,10 @@ ENV FLASK_ENV=development
 WORKDIR /app
 
 # Bundle app source
-COPY . .
+COPY src/app .
 
 RUN pip install --editable . && flask init-db
 
 EXPOSE 5000
+
+CMD ["flask", "run", "--host=0.0.0.0"]
