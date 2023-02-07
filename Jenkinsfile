@@ -5,14 +5,6 @@ pipeline {
         skipStagesAfterUnstable()
     }
     stages {
-         stage('Clone repository') { 
-            steps { 
-                script{
-                sh 'pwd'
-                }
-            }
-        }
-
         stage('Build') { 
             steps { 
                 script{
