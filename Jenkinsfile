@@ -20,10 +20,12 @@ pipeline {
         stage('Deploy') {
             steps {
                 script{
-                        docker.withRegistry('https://870461622945.dkr.ecr.us-east-1.amazonaws.com', 'ecr:us-east-1:aws-credentials') {
-                    app.push("${6}")
+                    docker.withRegistry('https://870461622945.dkr.ecr.us-east-1.amazonaws.com', 'ecr:us-east-1:aws-credentials') {
+                    app.push("${7}")
                     app.push("latest")
                     }
+                    sshPublisher(publishers: [sshPublisherDesc(configName: 'ec2-35-174-200-240.compute-1.amazonaws.com',
+                    transfers: [ sshTransfer(execCommand: 'bash set-flask-container.sh')])])
                 }
             }
         }
