@@ -24,7 +24,7 @@ pipeline {
                     app.push("${7}")
                     app.push("latest")
                     }
-                    sshPublisher(publishers: [sshPublisherDesc(configName: 'ec2-35-174-200-240.compute-1.amazonaws.com',
+                    sshPublisher(publishers: [sshPublisherDesc(configName: 'flask-app-srv',
                     transfers: [ sshTransfer(execCommand: 'bash set-flask-container.sh')])])
                 }
             }
