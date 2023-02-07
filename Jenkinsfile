@@ -4,15 +4,6 @@ pipeline {
     options {
         skipStagesAfterUnstable()
     }
-    stages {
-         stage('Clone repository') { 
-            steps { 
-                script{
-                checkout develop
-                }
-            }
-        }
-
         stage('Build') { 
             steps { 
                 script{
@@ -28,7 +19,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 script{
-                        docker.withRegistry('870461622945.dkr.ecr.us-east-1.amazonaws.com', 'ecr:us-east-1:aws-credentials') {
+                        docker.withRegistry('870461622945.dkr.ecr.us-east-1.amazonaws.com', 'ecr:us-east-1:aws-cerdentials') {
                     app.push("${5}")
                     app.push("latest")
                     }
