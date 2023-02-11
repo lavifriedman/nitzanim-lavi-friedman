@@ -8,7 +8,7 @@ pipeline {
         stage('Build') { 
             steps { 
                 script{
-                 app = docker.build("my-flask-app")
+                 app = docker.build("Flasker")
                 }
             }
         }
@@ -21,7 +21,7 @@ pipeline {
             steps {
                 script{
                     docker.withRegistry('https://870461622945.dkr.ecr.us-east-1.amazonaws.com', 'ecr:us-east-1:aws-credentials') {
-                    app.push("${11}")
+                    app.push("${12}")
                     app.push("latest")
                     }
                     sshPublisher(publishers: [sshPublisherDesc(configName: 'flask-app-srv',
