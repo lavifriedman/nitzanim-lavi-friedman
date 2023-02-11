@@ -21,7 +21,7 @@ pipeline {
             steps {
                 script{
                     docker.withRegistry('https://870461622945.dkr.ecr.us-east-1.amazonaws.com', 'ecr:us-east-1:aws-credentials') {
-                    app.push("${12}")
+                    app.push("${13}")
                     app.push("latest")
                     }
                     sshPublisher(publishers: [sshPublisherDesc(configName: 'flask-app-srv',
